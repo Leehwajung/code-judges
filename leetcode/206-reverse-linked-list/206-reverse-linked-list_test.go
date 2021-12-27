@@ -29,6 +29,11 @@ func Test_reverseList(t *testing.T) {
 			args: args{head: intsToLinkedList()},
 			want: intsToLinkedList(),
 		},
+		{
+			name: "Custom 1",
+			args: args{head: intsToLinkedList(1)},
+			want: intsToLinkedList(1),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

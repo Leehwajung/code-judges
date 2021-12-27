@@ -1,3 +1,5 @@
+//go:build iterative || !recursive
+
 package main
 
 type ListNode struct {
