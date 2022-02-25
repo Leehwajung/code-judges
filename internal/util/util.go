@@ -30,6 +30,14 @@ func StringsToIntPairs(strs []string) [][]int {
 	return intPairs
 }
 
+func StringsToSet(strs []string) map[string]bool {
+	set := make(map[string]bool, len(strs))
+	for _, s := range strs {
+		set[s] = true
+	}
+	return set
+}
+
 func StringToInt(s string) int {
 	i, err := strconv.Atoi(s)
 	if err != nil {
