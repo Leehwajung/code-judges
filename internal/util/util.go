@@ -16,6 +16,20 @@ func StringsToInts(strs []string) []int {
 	return ints
 }
 
+func StringsToIntPairs(strs []string) [][]int {
+	if len(strs)%2 != 0 {
+		fatalExit(errors.New("invalid integer pair as arguments passed"))
+		return nil
+	}
+	intPairs := make([][]int, 0, len(strs)/2)
+	for idx := 0; idx < len(strs); idx = idx + 2 {
+		i1 := StringToInt(strs[idx])
+		i2 := StringToInt(strs[idx+1])
+		intPairs = append(intPairs, []int{i1, i2})
+	}
+	return intPairs
+}
+
 func StringToInt(s string) int {
 	i, err := strconv.Atoi(s)
 	if err != nil {
