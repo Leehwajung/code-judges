@@ -47,6 +47,15 @@ func StringToInt(s string) int {
 	return i
 }
 
+func BitStringToUint32(s string) uint32 {
+	i, err := strconv.ParseUint(s, 2, 64)
+	if err != nil {
+		fatalExit(err)
+		return 0
+	}
+	return uint32(i)
+}
+
 func CheckArgsMinCount(count int) {
 	if len(os.Args)-1 < count {
 		fatalExit(errors.New("not enough arguments passed"))
