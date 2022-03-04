@@ -62,6 +62,12 @@ func CheckArgsMinCount(count int) {
 	}
 }
 
+func MustBeEvenArguments() {
+	if (len(os.Args)-1)%2 != 0 {
+		fatalExit(errors.New("odd arguments passed"))
+	}
+}
+
 func fatalExit(err error) {
 	_, _ = fmt.Fprintln(os.Stderr, err)
 	os.Exit(1)
