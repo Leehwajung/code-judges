@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	arr := util.StringsToInts(os.Args[1:])
+	arr := typeconv.StringsToInts(os.Args[1:])
 	output := canMakeArithmeticProgression(arr)
-	fmt.Println(output)
+	fmt.Print(output)
 }

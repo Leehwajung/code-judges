@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	nums := util.StringsToInts(os.Args[1:])
+	nums := typeconv.StringsToInts(os.Args[1:])
 	output := findMin(nums)
-	fmt.Println(output)
+	fmt.Print(output)
 }

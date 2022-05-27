@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
 )
 
 func main() {
-	util.CheckArgsMinCount(1)
+	args.MustEnough(1)
 	s := os.Args[1]
 	output := lengthOfLongestSubstring(s)
-	fmt.Println(output)
+	fmt.Print(output)
 }

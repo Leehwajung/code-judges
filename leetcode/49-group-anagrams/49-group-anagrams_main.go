@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
 )
 
 func main() {
-	util.CheckArgsMinCount(1)
+	args.MustEnough(1)
 	strs := os.Args[1:]
 	output := groupAnagrams(strs)
-	fmt.Println(output)
+	fmt.Print(output)
 }

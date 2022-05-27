@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(3)
-	nums := util.StringsToInts(os.Args[1 : len(os.Args)-2])
-	left := util.StringToInt(os.Args[len(os.Args)-2])
-	right := util.StringToInt(os.Args[len(os.Args)-1])
+	args.MustEnough(3)
+	nums := typeconv.StringsToInts(os.Args[1 : len(os.Args)-2])
+	left := typeconv.StringToInt(os.Args[len(os.Args)-2])
+	right := typeconv.StringToInt(os.Args[len(os.Args)-1])
 	output := numSubarrayBoundedMax(nums, left, right)
-	fmt.Println(output)
+	fmt.Print(output)
 }

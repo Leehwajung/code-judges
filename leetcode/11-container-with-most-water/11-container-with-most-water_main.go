@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(2)
-	height := util.StringsToInts(os.Args[1:])
+	args.MustEnough(2)
+	height := typeconv.StringsToInts(os.Args[1:])
 	output := maxArea(height)
-	fmt.Println(output)
+	fmt.Print(output)
 }

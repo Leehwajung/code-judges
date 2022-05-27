@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(2)
-	rowLen := util.StringToInt(os.Args[len(os.Args)-1])
-	heights := util.StringsToIntGrid(os.Args[1:len(os.Args)-1], rowLen)
+	args.MustEnough(2)
+	rowLen := typeconv.StringToInt(os.Args[len(os.Args)-1])
+	heights := typeconv.StringsToIntGrid(os.Args[1:len(os.Args)-1], rowLen)
 	output := pacificAtlantic(heights)
-	fmt.Println(output)
+	fmt.Print(output)
 }

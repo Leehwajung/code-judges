@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(1)
-	n := util.StringToInt(os.Args[1])
+	args.MustEnough(1)
+	n := typeconv.StringToInt(os.Args[1])
 	output := fizzBuzz(n)
-	fmt.Println(output)
+	fmt.Print(output)
 }

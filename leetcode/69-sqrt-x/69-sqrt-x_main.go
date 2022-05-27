@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(1)
-	x := util.StringToInt(os.Args[1])
+	args.MustEnough(1)
+	x := typeconv.StringToInt(os.Args[1])
 	output := mySqrt(x)
-	fmt.Println(output)
+	fmt.Print(output)
 }

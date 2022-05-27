@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(1)
-	num := util.BitStringToUint32(os.Args[1])
+	args.MustEnough(1)
+	num := typeconv.BitStringToUint32(os.Args[1])
 	output := reverseBits(num)
 	fmt.Printf("%b\n", output)
 }

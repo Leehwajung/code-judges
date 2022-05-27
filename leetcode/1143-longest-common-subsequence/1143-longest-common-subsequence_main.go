@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
 )
 
 func main() {
-	util.CheckArgsMinCount(2)
+	args.MustEnough(2)
 	text1 := os.Args[1]
 	text2 := os.Args[2]
 	output := longestCommonSubsequence(text1, text2)
-	fmt.Println(output)
+	fmt.Print(output)
 }

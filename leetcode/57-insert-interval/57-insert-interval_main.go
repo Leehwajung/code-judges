@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(2)
-	intervals := util.StringsToIntPairs(os.Args[1 : len(os.Args)-2])
-	newInterval := util.StringsToInts(os.Args[len(os.Args)-2:])
+	args.MustEnough(2)
+	args.MustEvenCount()
+	intervals := typeconv.StringsToIntPairs(os.Args[1 : len(os.Args)-2])
+	newInterval := typeconv.StringsToInts(os.Args[len(os.Args)-2:])
 	output := insert(intervals, newInterval)
-	fmt.Println(output)
+	fmt.Print(output)
 }

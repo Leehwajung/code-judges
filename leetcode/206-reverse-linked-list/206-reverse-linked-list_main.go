@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"code-judges/internal/util"
+	"code-judges/internal/args"
+	"code-judges/internal/typeconv"
 )
 
 func main() {
-	util.CheckArgsMinCount(2)
-	head := intsToLinkedList(util.StringsToInts(os.Args[1:])...)
+	args.MustEnough(2)
+	head := intsToLinkedList(typeconv.StringsToInts(os.Args[1:])...)
 	output := reverseList(head)
 	fmt.Println(linkedListToInts(output))
 }

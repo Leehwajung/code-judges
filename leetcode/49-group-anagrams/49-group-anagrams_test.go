@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"code-judges/internal/util"
+	"code-judges/internal/typeconv"
 )
 
 func Test_groupAnagrams(t *testing.T) {
@@ -49,10 +49,10 @@ func Test_groupAnagrams(t *testing.T) {
 func groupAnagramsEqual(x, y [][]string) bool {
 	ySets := make([]map[string]bool, len(y))
 	for i, ys := range y {
-		ySets[i] = util.StringsToSet(ys)
+		ySets[i] = typeconv.StringsToSet(ys)
 	}
 	for _, xs := range x {
-		xSet := util.StringsToSet(xs)
+		xSet := typeconv.StringsToSet(xs)
 		equal := false
 		for _, ySet := range ySets {
 			if reflect.DeepEqual(xSet, ySet) {
