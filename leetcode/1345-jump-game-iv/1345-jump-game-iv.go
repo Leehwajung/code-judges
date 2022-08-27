@@ -7,39 +7,41 @@ func minJumps(arr []int) int {
 		numIdxs[num] = append(numIdxs[num], idx)
 	}
 
+	queue := []int{0}
 	visited := make(map[int]bool)
+	jumps := -1
 
-	type idxJumps struct{ idx, jumps int }
-	queue := []*idxJumps{{idx: 0, jumps: 0}}
+	for len(queue) > 0 {
+		jumps++
+		loops := len(queue)
 
-	for ; len(queue) > 0; queue = queue[1:] {
-		curr := queue[0]
-		if curr.idx == len(arr)-1 {
-			return curr.jumps
+		for i := 0; i < loops; i++ {
+			currIdx := queue[0]
+			queue = queue[1:]
+			if currIdx == len(arr)-1 {
+				return jumps
+			}
+
+			if currIdx < 0 || currIdx >= len(arr) || visited[currIdx] {
+				continue
+			}
+
+			visited[currIdx] = true
+
+			nextIdx := currIdx + 1
+			if nextIdx < len(arr) && arr[nextIdx] != arr[currIdx] {
+				queue = append(queue, nextIdx)
+			}
+
+			prevIdx := currIdx - 1
+			if prevIdx >= 0 && arr[prevIdx] != arr[currIdx] {
+				queue = append(queue, prevIdx)
+			}
+
+			queue = append(queue, numIdxs[arr[currIdx]]...)
+			delete(numIdxs, arr[currIdx])
 		}
-
-		if curr.idx < 0 || curr.idx >= len(arr) || visited[curr.idx] {
-			continue
-		}
-
-		visited[curr.idx] = true
-		nextJumps := curr.jumps + 1
-
-		nextIdx := curr.idx + 1
-		if nextIdx < len(arr) && arr[nextIdx] != arr[curr.idx] {
-			queue = append(queue, &idxJumps{idx: nextIdx, jumps: nextJumps})
-		}
-
-		prevIdx := curr.idx - 1
-		if prevIdx >= 0 && arr[prevIdx] != arr[curr.idx] {
-			queue = append(queue, &idxJumps{idx: prevIdx, jumps: nextJumps})
-		}
-
-		for _, jumpIdx := range numIdxs[arr[curr.idx]] {
-			queue = append(queue, &idxJumps{idx: jumpIdx, jumps: nextJumps})
-		}
-		delete(numIdxs, arr[curr.idx])
 	}
 
-	return len(arr) - 1
+	return jumps
 }
