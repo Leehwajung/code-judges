@@ -34,6 +34,20 @@ func StringsToInts(strs []string) []int {
 	return ints
 }
 
+func StringsToIntOrNils(strs []string) []interface{} {
+	intOrNils := make([]interface{}, 0, len(strs))
+	for _, s := range strs {
+		var i interface{}
+		switch s {
+		case "nil", "<nil>", "null", "<null>":
+		default:
+			i = StringToInt(s)
+		}
+		intOrNils = append(intOrNils, i)
+	}
+	return intOrNils
+}
+
 func StringsToIntPairs(strs []string) [][]int {
 	if len(strs)%2 != 0 {
 		fatalExit(errors.New("invalid integer pair as arguments passed"))
